@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Today.View.ItemListPage" 
+             Title="Today">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid AbsoluteLayout.LayoutFlags="All" 
+              AbsoluteLayout.LayoutBounds="0,0,1,1"
+              RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" Padding="16" Spacing="16" BackgroundColor="#F2C500">
+                <Button Text="Add Todo" 
+                        Command="{Binding OnTodoAdded}" 
+                        Clicked="OnAdded"
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        BackgroundColor="#F2C500"/>
+            </StackLayout>
+            <ListView x:Name="listView" Margin="20" 
+              ItemSelected="OnListItemSelected" 
+              IsPullToRefreshEnabled="true" 
+              Refreshing="OnRefresh"
+              Grid.Row="1"
+              >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="{Binding EColor}">
+                                <Label Text="{Binding Name}" 
+                                   FontSize="16" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="1" 
+                                   HorizontalOptions="End" 
+                                   FontSize="16" 
+                                   Text="{Binding Time}" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   TextColor="#979797" 
+                                   VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Grid.Row="2" x:Name="OfflineStack" Padding="8" IsVisible="false" BackgroundColor="#F2C500">
+                <Label TextColor="White" Text="No Connection - Offline Mode" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

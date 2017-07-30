@@ -19,7 +19,14 @@ namespace Todo.Droid
 
 			base.OnCreate (bundle);
 
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+            // Initialization for Azure Mobile Apps
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            // This MobileServiceClient has been configured to communicate with the Azure Mobile App and
+            // Azure Gateway using the application url. You're all set to start working with your Mobile App!
+            Microsoft.WindowsAzure.MobileServices.MobileServiceClient Module2NjAppClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
+            "http://module2njapp.azurewebsites.net");
+
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new Todo.App ());
 		}
 	}
