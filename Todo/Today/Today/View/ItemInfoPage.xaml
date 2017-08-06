@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Today.View.ItemInfoPage"
+             x:Name="page">
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+        <Label Text="Todo" TextColor="#87CEFA" FontSize="Large"/>
+            <StackLayout Orientation="Horizontal">
+            <Entry WidthRequest ="300" Text="{Binding Source={x:Reference page}, Path=Item.Name}" AbsoluteLayout.LayoutBounds="1,100,1,1" AbsoluteLayout.LayoutFlags="All"/>
+            <Button Image="record.png" BackgroundColor="#00000000" Clicked="OnRecognizeSpeechButtonClicked" AbsoluteLayout.LayoutBounds="1,100,1,1" AbsoluteLayout.LayoutFlags="All"/>
+            </StackLayout>
+            <ActivityIndicator HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       IsVisible="False"
+                       IsEnabled="True"
+                       x:Name="syncIndicator"/>
+        <Button Text="Save" Clicked="OnSaveClicked" AbsoluteLayout.LayoutBounds="200,580,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#90EE90" 	TextColor="White"/>
+        <Button Text="Delete Todo" Clicked="OnDoneClicked" AbsoluteLayout.LayoutBounds="200,730,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#FF4500" TextColor="White"/>
+        <Button Text="Cancel" Clicked="OnCancelClicked" AbsoluteLayout.LayoutBounds="200,880,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#87CEFA" TextColor="White"/>
+       </StackLayout>
+</ContentPage>
